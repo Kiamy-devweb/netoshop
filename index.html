@@ -803,23 +803,22 @@
 
             <script>
         function handleCompra() {
-            alert('Redirecionando para a página de compra...');
-            // Aqui você pode adicionar a lógica para redirecionar ou processar a compra
-            // window.location.href = 'pagina-de-compra.html';
-          window.location.htrf = 'buymeacoffee.com/kiamynetook';
-        }
+    alert('Redirecionando para a página de compra...');
+    // Correção: htrf -> href e adicionar https://
+    window.location.href = 'https://buymeacoffee.com/kiamynetook';
+}
 
-        // Adiciona um efeito sonoro visual ao clicar
-        document.querySelector('.btn-comprar').addEventListener('click', function(e) {
-            // Remove classe se já existir
-            this.classList.remove('clicked');
-            
-            // Força reflow
-            void this.offsetWidth;
-            
-            // Adiciona classe novamente
-            this.classList.add('clicked');
-        });
+// Adiciona um efeito sonoro visual ao clicar
+document.querySelector('.btn-comprar').addEventListener('click', function(e) {
+    // Remove classe se já existir
+    this.classList.remove('clicked');
+    
+    // Força reflow
+    void this.offsetWidth;
+    
+    // Adiciona classe novamente
+    this.classList.add('clicked');
+});
     </script>
             <h1 class="hero-title">Discover Amazing Products</h1>
             <p class="hero-description">Explore our curated collection of premium items designed to enhance your lifestyle. From fashion to tech, find everything you need with exclusive deals and fast shipping.</p>
