@@ -37,6 +37,29 @@
     .btn-comprar.clicked {
       animation: pulse 0.6s ease-in-out;
     }
+
+    .btn-voltar {
+      background: linear-gradient(45deg, #6c757d, #495057);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 20px 10px;
+      box-shadow: 0 4px 15px rgba(108, 117, 125, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+    }
+    
+    .btn-voltar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(108, 117, 125, 0.6);
+      background: linear-gradient(45deg, #495057, #6c757d);
+    }
   </style>
   <meta name="Desenvolvedor" content="Kiamy Neto">
   <meta name="keywords" content="">
@@ -834,13 +857,56 @@
         <button class="btn-comprar" onclick="handleCompra()">
           🛒 Comprar Projeto
         </button>
-      
       <!-- ELEMENTO STATUS CORRIGIDO -->
         <div id="status" class="status-message"></div>
+
+             <!-- BOTÃO VOLTAR -->
+        <button class="btn-voltar" onclick="voltarInicio()">
+          🏠 Voltar ao Início
+        </button>
 
             
 
   <script>
+    // Função para voltar ao início
+    function voltarInicio() {
+      console.log('🏠 Voltando para a página inicial...');
+      
+      const status = document.getElementById('status');
+      if (status) {
+        status.innerHTML = '🏠 Voltando ao início...';
+        status.style.color = '#6c757d';
+      }
+      
+      // Adiciona efeito visual no botão
+      if (event && event.target) {
+        event.target.classList.add('clicked');
+      }
+      
+      // Volta para o topo da página ou recarrega
+      try {
+        // Opção 1: Volta para o topo suavemente
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+        
+        // Limpa o status após a animação
+        setTimeout(() => {
+          if (status) status.innerHTML = '';
+          if (event && event.target) {
+            event.target.classList.remove('clicked');
+          }
+        }, 2000);
+        
+        // Opção 2: Se quiser recarregar a página, descomente a linha abaixo
+        // window.location.reload();
+        
+      } catch (error) {
+        console.error('Erro ao voltar ao início:', error);
+        window.location.href = '#';
+      }
+    }
         // Função principal - FUNCIONA GARANTIDO
     function handleCompra() {
       console.log('🚀 Função handleCompra executada com sucesso!');
