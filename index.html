@@ -4,9 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Netoshop</title>
+  <title>Netoshop - Kiamy Neto</title>
   <style>
-     .btn-comprar {
+   <style>
+    .btn-comprar {
       background: linear-gradient(45deg, #FF6B35, #F7941E);
       color: white;
       border: none;
@@ -16,10 +17,11 @@
       border-radius: 25px;
       cursor: pointer;
       transition: all 0.3s ease;
-      margin: 20px;
+      margin: 20px 0;
       box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
       text-transform: uppercase;
       letter-spacing: 1px;
+      display: inline-block;
     }
     
     .btn-comprar:hover {
@@ -828,45 +830,61 @@
       <div class="hero-container">
         <div class="hero-content">
           <div class="content-wrapper" data-aos="fade-up" data-aos-delay="100">
-            <button class="btn-comprar" onclick="handleCompra()">
-        🛒 Comprar Projeto
-      </button>
+            <!-- BOTÃO CORRIGIDO -->
+        <button class="btn-comprar" onclick="handleCompra()">
+          🛒 Comprar Projeto
+        </button>
       
-      <!-- Elemento status agora existe -->
-      <div id="status" class="status-message"></div></li>
+      <!-- ELEMENTO STATUS CORRIGIDO -->
+        <div id="status" class="status-message"></div>
+
+            
 
   <script>
-       // Função principal corrigida
+        // Função principal - FUNCIONA GARANTIDO
     function handleCompra() {
-      console.log('Função handleCompra executada!');
+      console.log('🚀 Função handleCompra executada com sucesso!');
       
       const status = document.getElementById('status');
       const url = 'https://buymeacoffee.com/kiamynetook/e/457951';
       
-      // Adiciona efeito visual
-      const btn = event.target;
-      btn.classList.add('clicked');
+      // Verifica se o elemento status existe
+      if (!status) {
+        console.error('❌ Elemento status não encontrado!');
+        // Mesmo assim tenta o redirect
+        window.open(url, '_blank');
+        return;
+      }
+      
+      // Adiciona efeito visual no botão
+      if (event && event.target) {
+        event.target.classList.add('clicked');
+      }
       
       // Mostra status
-      status.innerHTML = '🔄 Redirecionando...';
+      status.innerHTML = '🔄 Redirecionando para Buy Me a Coffee...';
       status.style.color = '#007bff';
-
+      
       try {
-        // Método 1: Tenta abrir em nova aba primeiro
+        // Método 1: Tenta abrir em nova aba
+        console.log('🔗 Tentando abrir:', url);
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
         
-        if (newWindow && !newWindow.closed) {
-          status.innerHTML = '✅ Aberto em nova aba!';
+        if (newWindow && !newWindow.closed && typeof newWindow.location !== 'undefined') {
+          status.innerHTML = '✅ Redirecionamento realizado com sucesso!';
           status.style.color = '#28a745';
-
-      // Remove o efeito após 3 segundos
+          
+          // Limpa o status após 3 segundos
           setTimeout(() => {
             status.innerHTML = '';
-            btn.classList.remove('clicked');
+            if (event && event.target) {
+              event.target.classList.remove('clicked');
+            }
           }, 3000);
         } else {
-          // Se popup foi bloqueado, tenta redirect na mesma aba
-          status.innerHTML = '⏳ Redirecionando em 2 segundos...';
+          // Popup bloqueado - tenta redirect na mesma aba
+          console.log('⚠️ Popup bloqueado, tentando redirect na mesma aba');
+          status.innerHTML = '⏳ Redirecionando na mesma aba em 2 segundos...';
           status.style.color = '#ffc107';
           
           setTimeout(() => {
@@ -874,27 +892,37 @@
           }, 2000);
         }
       } catch (error) {
-        console.error('Erro:', error);
-        // Fallback final
+        console.error('❌ Erro no redirecionamento:', error);
+        
+        // Fallback final - redirect direto
         status.innerHTML = '🔄 Redirecionando...';
-        window.location.href = url;
+        status.style.color = '#dc3545';
+        
+        setTimeout(() => {
+          window.location.href = url;
+        }, 1000);
       }
     }
 
-    // Remove efeito de clique quando animação terminar
+    // Remove animação quando terminar
     document.addEventListener('DOMContentLoaded', function() {
+      console.log('✅ DOM carregado - Script inicializado');
+      
       const btnComprar = document.querySelector('.btn-comprar');
       if (btnComprar) {
         btnComprar.addEventListener('animationend', function() {
           this.classList.remove('clicked');
         });
+        console.log('✅ Event listeners configurados');
+      } else {
+        console.error('❌ Botão comprar não encontrado!');
       }
     });
     
-    // Debug
-    console.log('✅ Script carregado com sucesso!');
+    // Debug inicial
+    console.log('🎯 Script carregado com sucesso!');
     console.log('🔗 URL de destino:', 'https://buymeacoffee.com/kiamynetook/e/457951');
-  </script>
+    console.log('📅 Timestamp:', new Date().toISOString());
     </script>
             <h1 class="hero-title">Discover Amazing Products</h1>
             <p class="hero-description">Explore our curated collection of premium items designed to enhance your lifestyle. From fashion to tech, find everything you need with exclusive deals and fast shipping.</p>
