@@ -798,27 +798,43 @@
         <div class="hero-content">
           <div class="content-wrapper" data-aos="fade-up" data-aos-delay="100">
             <button class="btn-comprar" onclick="handleCompra()">
-        Comprar Projeto
+            Comprar Projeto
         </button></li>
 
-            <script>
+  <script>
+        // Função principal - múltiplos métodos de fallback
         function handleCompra() {
-    alert('Redirecionando para a página de compra...');
-    // Correção: htrf -> href e adicionar https://
-    window.location.href = 'https://buymeacoffee.com/kiamynetook';
-}
-
-// Adiciona um efeito sonoro visual ao clicar
-document.querySelector('.btn-comprar').addEventListener('click', function(e) {
-    // Remove classe se já existir
-    this.classList.remove('clicked');
-    
-    // Força reflow
-    void this.offsetWidth;
-    
-    // Adiciona classe novamente
-    this.classList.add('clicked');
-});
+            const status = document.getElementById('status');
+            const url = 'https://buymeacoffee.com/kiamynetook';
+            
+            // Adiciona efeito visual
+            const btn = event.target;
+            btn.classList.add('clicked');
+            
+            status.innerHTML = '🔄 Redirecionando...';
+            status.style.color = '#007bff';
+            
+            try {
+                // Método 1: Tenta abrir em nova aba primeiro
+                const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                
+                if (newWindow && !newWindow.closed) {
+                    status.innerHTML = '✅ Aberto em nova aba!';
+                    status.style.color = '#28a745';
+                } else {
+                    // Se falhou, tenta redirect na mesma aba
+                    setTimeout(() => {
+                        window.location.href = url;
+                    }, 1000);
+                    status.innerHTML = '⏳ Redirecionando em 1 segundo...';
+                    status.style.color = '#ffc107';
+                }
+            } catch (error) {
+                // Se tudo falhar, usa o método básico
+                console.error('Erro:', error);
+                window.location.href = url;
+            }
+        }
     </script>
             <h1 class="hero-title">Discover Amazing Products</h1>
             <p class="hero-description">Explore our curated collection of premium items designed to enhance your lifestyle. From fashion to tech, find everything you need with exclusive deals and fast shipping.</p>
