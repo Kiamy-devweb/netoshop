@@ -869,14 +869,10 @@
   <script>
     // Função para voltar ao início
     function voltarInicio() {
-      console.log('🏠 Voltando para a página inicial...');
+      console.log('🚀 Função handleCompra executada com sucesso!');
       
       const status = document.getElementById('status');
-       const url = 'https://kiamyneto.netlify.app/portfolio';
-      if (status) {
-        status.innerHTML = '🏠 Voltando ao início...';
-        status.style.color = '#6c757d';
-      }
+      const url = 'https://kiamyneto.netlify.app/portfolio';
       
       // Adiciona efeito visual no botão
       if (event && event.target) {
@@ -907,6 +903,7 @@
         window.location.href = '#';
       }
     }
+    
         // Função principal - FUNCIONA GARANTIDO
     function handleCompra() {
       console.log('🚀 Função handleCompra executada com sucesso!');
