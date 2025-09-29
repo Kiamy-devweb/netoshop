@@ -6,58 +6,23 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Netoshop - Kiamy Neto</title>
   <style>
-    .btn-comprar {
-      background: linear-gradient(45deg, #FF6B35, #F7941E);
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin: 20px 0;
-      box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
-      text-transform: uppercase;
-      letter-spacing: 1px;
+   .btn {
       display: inline-block;
-    }
-    
-    .btn-comprar:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
-      background: linear-gradient(45deg, #F7941E, #FF6B35);
-    }
-    
-    .btn-comprar:active {
-      transform: translateY(0);
-    }
-    
-    .btn-comprar.clicked {
-      animation: pulse 0.6s ease-in-out;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
     }
 
-    .btn-voltar {
-      background: linear-gradient(45deg, #6c757d, #495057);
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin: 20px 10px;
-      box-shadow: 0 4px 15px rgba(108, 117, 125, 0.4);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      display: inline-block;
-    }
-    
-    .btn-voltar:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(108, 117, 125, 0.6);
-      background: linear-gradient(45deg, #495057, #6c757d);
+    .btn:hover {
+      background-color: #0056b3;
     }
   </style>
   <meta name="Desenvolvedor" content="Kiamy Neto">
@@ -852,142 +817,13 @@
       <div class="hero-container">
         <div class="hero-content">
           <div class="content-wrapper" data-aos="fade-up" data-aos-delay="100">
-            <!-- BOTÃO CORRIGIDO -->
-        <button class="btn-comprar" onclick="handleCompra()">
-          🛒 Comprar Projeto
-        </button>
-      <!-- ELEMENTO STATUS CORRIGIDO -->
-        <div id="status" class="status-message"></div>
-
-             <!-- BOTÃO VOLTAR -->
-        <button class="btn-voltar" onclick="voltarInicio()">
-          🏠 Voltar ao Início
-        </button>
+            <!-- BOTÕES  -->
+        <a href="https://go.hotmart.com/N102088665G?dp=1" class="btn">COMPRAR PROJETO</a>
+        <a href="https://kiamyneto.netlify.app/portfolio" class="btn">PÁGINA INICIAL</a>
 
             
 
-  <script>
-    // Função para voltar ao início
-    function voltarInicio() {
-      console.log('🚀 Função handleCompra executada com sucesso!');
-      
-      const status = document.getElementById('status');
-      const url = 'https://kiamyneto.netlify.app/portfolio';
-      
-      // Adiciona efeito visual no botão
-      if (event && event.target) {
-        event.target.classList.add('clicked');
-      }
-      
-      // Volta para o topo da página ou recarrega
-      try {
-        // Opção 1: Volta para o topo suavemente
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-        
-        // Limpa o status após a animação
-        setTimeout(() => {
-          if (status) status.innerHTML = '';
-          if (event && event.target) {
-            event.target.classList.remove('clicked');
-          }
-        }, 2000);
-        
-        // Opção 2: Se quiser recarregar a página, descomente a linha abaixo
-        // window.location.reload();
-        
-      } catch (error) {
-        console.error('Erro ao voltar ao início:', error);
-        window.location.href = '#';
-      }
-    }
-    
-        // Função principal - FUNCIONA GARANTIDO
-    function handleCompra() {
-      console.log('🚀 Função handleCompra executada com sucesso!');
-      
-      const status = document.getElementById('status');
-      const url = 'https://go.hotmart.com/N102088665G';
-      
-      // Verifica se o elemento status existe
-      if (!status) {
-        console.error('❌ Elemento status não encontrado!');
-        // Mesmo assim tenta o redirect
-        window.open(url, '_blank');
-        return;
-      }
-      
-      
-      // Adiciona efeito visual no botão
-      if (event && event.target) {
-        event.target.classList.add('clicked');
-      }
-      
-      // Mostra status
-      status.innerHTML = '🔄 Redirecionando para Buy Me a Coffee...';
-      status.style.color = '#007bff';
-      
-      try {
-        // Método 1: Tenta abrir em nova aba
-        console.log('🔗 Tentando abrir:', url);
-        const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
-        
-        if (newWindow && !newWindow.closed && typeof newWindow.location !== 'undefined') {
-          status.innerHTML = '✅ Redirecionamento realizado com sucesso!';
-          status.style.color = '#28a745';
-          
-          // Limpa o status após 3 segundos
-          setTimeout(() => {
-            status.innerHTML = '';
-            if (event && event.target) {
-              event.target.classList.remove('clicked');
-            }
-          }, 3000);
-        } else {
-          // Popup bloqueado - tenta redirect na mesma aba
-          console.log('⚠️ Popup bloqueado, tentando redirect na mesma aba');
-          status.innerHTML = '⏳ Redirecionando na mesma aba em 2 segundos...';
-          status.style.color = '#ffc107';
-          
-          setTimeout(() => {
-            window.location.href = url;
-          }, 2000);
-        }
-      } catch (error) {
-        console.error('❌ Erro no redirecionamento:', error);
-        
-        // Fallback final - redirect direto
-        status.innerHTML = '🔄 Redirecionando...';
-        status.style.color = '#dc3545';
-        
-        setTimeout(() => {
-          window.location.href = url;
-        }, 1000);
-      }
-    }
-
-    // Remove animação quando terminar
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('✅ DOM carregado - Script inicializado');
-      
-      const btnComprar = document.querySelector('.btn-comprar');
-      if (btnComprar) {
-        btnComprar.addEventListener('animationend', function() {
-          this.classList.remove('clicked');
-        });
-        console.log('✅ Event listeners configurados');
-      } else {
-        console.error('❌ Botão comprar não encontrado!');
-      }
-    });
-    
-    // Debug inicial
-    console.log('🎯 Script carregado com sucesso!');
-    console.log('🔗 URL de destino:', 'https://buymeacoffee.com/kiamynetook/e/457951');
-    console.log('📅 Timestamp:', new Date().toISOString());
-    </script>
+ 
             <h1 class="hero-title">Discover Amazing Products</h1>
             <p class="hero-description">Explore our curated collection of premium items designed to enhance your lifestyle. From fashion to tech, find everything you need with exclusive deals and fast shipping.</p>
             <div class="hero-actions" data-aos="fade-up" data-aos-delay="200">
