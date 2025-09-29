@@ -6,7 +6,6 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Netoshop - Kiamy Neto</title>
   <style>
-   <style>
     .btn-comprar {
       background: linear-gradient(45deg, #FF6B35, #F7941E);
       color: white;
@@ -873,6 +872,7 @@
       console.log('🏠 Voltando para a página inicial...');
       
       const status = document.getElementById('status');
+       const url = 'https://kiamyneto.netlify.app/portfolio';
       if (status) {
         status.innerHTML = '🏠 Voltando ao início...';
         status.style.color = '#6c757d';
@@ -921,6 +921,7 @@
         window.open(url, '_blank');
         return;
       }
+      
       
       // Adiciona efeito visual no botão
       if (event && event.target) {
